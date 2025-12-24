@@ -1,4 +1,4 @@
-# 🚀 Быстрый старт Slot.Me
+#  Быстрый старт Slot.Me
 
 ## Шаг 1: Настройка базы данных PostgreSQL
 
@@ -47,7 +47,7 @@ python manage.py create_superadmin
 python manage.py runserver
 ```
 
-✅ Backend запущен на http://localhost:8000
+ Backend запущен на http://localhost:8000
 
 Доступ в админку: http://localhost:8000/admin
 - Username: admin (из .env)
@@ -67,7 +67,7 @@ npm install
 npm run dev
 ```
 
-✅ Frontend запущен на http://localhost:3000
+ Frontend запущен на http://localhost:3000
 
 ## Шаг 4: Первый вход
 
@@ -150,6 +150,4 @@ npm run preview
 python manage.py migrate --run-syncdb
 ```
 
-## Готово! 🎉
 
-Ваша система бронирования готова к использованию!
