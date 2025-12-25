@@ -1,4 +1,4 @@
-# Slot.Me - Система бронирования переговорных комнат
+# Slot.Me 
 
 ##  Стек технологий
 
@@ -16,140 +16,19 @@
 ##  Функциональность
 
 ### Для пользователей:
-- ✅ Регистрация и авторизация
-- ✅ Просмотр расписания бронирований
-- ✅ Создание бронирования с произвольным временем
-- ✅ Просмотр своих бронирований
-- ✅ Отмена своих бронирований
-- ✅ Отмена по уникальной ссылке (без входа в систему)
+-  Регистрация и авторизация
+-  Просмотр расписания бронирований
+-  Создание бронирования с произвольным временем
+-  Просмотр своих бронирований
+-  Отмена своих бронирований
+-  Отмена по уникальной ссылке (без входа в систему)
 
 ### Для администраторов:
-- ✅ Все функции пользователя
-- ✅ Управление комнатами (создание, редактирование)
-- ✅ Просмотр всех бронирований
-- ✅ Отмена любых бронирований
+-  Все функции пользователя
+-  Управление комнатами (создание, редактирование)
+-  Просмотр всех бронирований
+-  Отмена любых бронирований
 
-
-##  API Документация
-
-### Аутентификация
-
-#### Регистрация
-```
-POST /api/auth/register/
-Content-Type: application/json
-
-{
-  "username": "user123",
-  "email": "user@example.com",
-  "password": "securepass123",
-  "password_confirm": "securepass123",
-  "first_name": "Иван",
-  "last_name": "Иванов",
-  "patronymic": "Петрович",
-  "group_name": "КтСо3-5",
-  "phone_number": "+79991234567"
-}
-```
-
-#### Вход
-```
-POST /api/auth/login/
-Content-Type: application/json
-
-{
-  "username": "user123",
-  "password": "securepass123"
-}
-
-Response:
-{
-  "access": "eyJ...",
-  "refresh": "eyJ...",
-  "user": { ... }
-}
-```
-
-#### Выход
-```
-POST /api/auth/logout/
-Authorization: Bearer {access_token}
-
-{
-  "refresh": "refresh_token_here"
-}
-```
-
-### Расписание
-
-#### Получить расписание
-```
-GET /api/schedule/?date=2025-12-01
-Authorization: Bearer {access_token}
-```
-
-### Бронирования
-
-#### Создать бронирование
-```
-POST /api/bookings/
-Authorization: Bearer {access_token}
-
-{
-  "room": 1,
-  "booking_date": "2025-12-05",
-  "start_time": "14:00",
-  "end_time": "16:00",
-  "purpose": "Встреча с клиентом"
-}
-```
-
-#### Мои бронирования
-```
-GET /api/bookings/my/?status=active&future_only=true
-Authorization: Bearer {access_token}
-```
-
-#### Отмена бронирования
-```
-DELETE /api/bookings/{id}/
-Authorization: Bearer {access_token}
-```
-
-#### Отмена по токену (без авторизации)
-```
-DELETE /api/cancel/{cancellation_token}/
-```
-
-### Комнаты (только для админов)
-
-#### Список комнат
-```
-GET /api/rooms/
-Authorization: Bearer {access_token}
-```
-
-#### Создать комнату
-```
-POST /api/rooms/
-Authorization: Bearer {access_token}
-
-{
-  "name": "Переговорная A",
-  "capacity": 10,
-  "floor": 3,
-  "description": "Большая комната с проектором"
-}
-```
-
-##  Безопасность
-
-- Пароли хешируются с использованием PBKDF2-SHA256
-- JWT токены для аутентификации
-- Access token: 60 минут
-- Refresh token: 7 дней
-- CORS настроен для безопасной работы frontend/backend
-- Защита от двойного бронирования на уровне БД
 
 ##  Валидация бронирований
 
