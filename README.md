@@ -1,4 +1,4 @@
-# Slot.Me 
+# Slot.Me - https://slotme.space
 
 ##  Стек технологий
 
